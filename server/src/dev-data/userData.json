@@ -1,0 +1,26 @@
+[
+  {
+		"_id": "62629a46c0e0d8001e134ffb",
+    "name": "user",
+    "email": "user@gmail.com",
+    "role": "user",
+		"active": true,
+		"password": "$2a$12$cnTLE1.jXyr9NlMV1YL4auINm4lakwAJTFLW4SKI/MizubsYHfRIO"
+  },
+	{
+		"_id": "626300117b79f101fa2bfb6a",
+    "name": "user2",
+    "email": "user2@gmail.com",
+    "role": "user",
+		"active": true,
+		"password": "$2a$12$cnTLE1.jXyr9NlMV1YL4auINm4lakwAJTFLW4SKI/MizubsYHfRIO"
+  },
+  {
+		"_id": "62629b1b436e5ce4824f0574",
+    "name": "admin",
+    "email": "admin@gmail.com",
+    "role": "admin",
+		"active": true,
+		"password": "$2a$12$cnTLE1.jXyr9NlMV1YL4auINm4lakwAJTFLW4SKI/MizubsYHfRIO"
+  }
+]

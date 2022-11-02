@@ -1,0 +1,58 @@
+version: '3'
+
+networks:
+  learn-eng-network:
+    driver: bridge
+
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile.prod
+    container_name: learn-eng-client
+    restart: unless-stopped
+    command: serve -s dist -l ${CLIENT_PORT}
+
+    networks:
+      - learn-eng-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: learn-eng-server
+    restart: unless-stopped
+    command: npm run start
+
+    networks:
+      - learn-eng-network
+
+    environment:
+      - NODE_ENV=production
+      - PORT=${SERVER_PORT}
+      - MONGO_DB_PASSWORD=${MONGO_DB_PASSWORD}
+      - MONGO_DB_URL=${MONGO_DB_URL}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - JWT_COOKIE_EXPIRES_IN=${JWT_COOKIE_EXPIRES_IN}
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: learn-eng-nginx
+
+    networks:
+      - learn-eng-network
+
+    depends_on:
+      - client
+      - server
+
+    volumes:
+      - ./nginx/prod.conf.template:/etc/nginx/templates/default.conf.template
+
+    environment:
+      - CLIENT_URL=http://client:${CLIENT_PORT}
+      - SERVER_URL=http://server:${SERVER_PORT}
+
+    ports:
+      - "80:80"

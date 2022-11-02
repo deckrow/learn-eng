@@ -1,0 +1,16 @@
+[
+	{
+		"_id": "626d21807b66600065f408f6",
+		"createdAt": "2022-04-30T11:45:54.527+00:00",
+		"word": "я",
+		"wordTranslation": "i",
+		"user": "62629a46c0e0d8001e134ffb"
+	},
+	{
+		"_id": "626e3afc29814300e09cbbec",
+		"createdAt": "2022-04-30T11:45:54.527+00:00",
+		"word": "ты",
+		"wordTranslation": "you",
+		"user": "626300117b79f101fa2bfb6a"
+	}
+]

@@ -1,0 +1,16 @@
+server {
+  listen 80;
+
+  location / {
+    proxy_pass ${CLIENT_URL};
+
+    # Needed for sockets
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+  }
+
+  location /api {
+    proxy_pass ${SERVER_URL};
+  }
+}
